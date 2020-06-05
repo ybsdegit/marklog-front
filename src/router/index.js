@@ -21,8 +21,11 @@ Vue.use(VueRouter)
   },
   {
     path: '/blog/add',
-    name: 'BlogEdit',
-    component: () => import('../views/BlogEdit.vue')
+    name: 'BlogAdd',
+    component: () => import('../views/BlogEdit.vue'),
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/blog/:blogId',
@@ -32,7 +35,10 @@ Vue.use(VueRouter)
   {
     path: '/blog/:blogId/edit',
     name: 'BlogEdit',
-    component: () => import('../views/BlogEdit.vue')
+    component: () => import('../views/BlogEdit.vue'),
+    meta: {
+      requireAuth: true
+    }
   }
 ]
 

@@ -9,6 +9,7 @@ import "element-ui/lib/theme-chalk/index.css"
 import axios from 'axios'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import './permission'
 
 import './axios'
 
@@ -23,3 +24,4 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
