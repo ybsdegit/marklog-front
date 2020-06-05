@@ -74,7 +74,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           const _this = this
-          this.$axios.post('/blog/edit', this.ruleForm, {
+          this.axios.post('/blog/edit', this.ruleForm, {
             headers: {
               Authorization: localStorage.getItem('token'),
             }
@@ -94,11 +94,12 @@ export default {
     },
   },
   created() {
+    console.log("233435")
     const blogId = this.$route.params.blogId
     const _this = this
     console.log(blogId)
     if(blogId) {
-      this.$axios.get('/blog/detail/' + blogId).then(res => {
+      this.axios.get('/blog/detail/' + blogId).then(res => {
         console.log(res)
         const blog = res.data.data
         _this.ruleForm.title = blog.title

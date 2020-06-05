@@ -47,9 +47,8 @@ export default {
         type: 'error',
       })
         .then(() => {
-          
           console.log('删除')
-          this.$axios.put('/blog/delete/' + id).then((res) => {
+          axios.put('/blog/delete/' + id).then((res) => {
             console.log('删除', res.data.msg)
             _this.$router.push('/blogs')
           })
@@ -64,14 +63,14 @@ export default {
             message: '已取消删除',
           })
         })
-    }
+    },
   },
   created() {
     const blogId = this.$route.params.blogId
     const _this = this
     console.log(blogId)
     if (blogId) {
-      this.$axios.get('/blog/detail/' + blogId).then((res) => {
+      axios.get('/blog/detail/' + blogId).then((res) => {
         console.log(res)
         const blog = res.data.data
         _this.blog.title = blog.title

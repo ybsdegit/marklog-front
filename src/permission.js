@@ -2,8 +2,11 @@ import router from './router'
 
 // 路由判断登录 根据路由配置文件的参数
 router.beforeEach((to, from, next) => {
+  console.log('=============权限控制1')
+
   if (to.matched.some((record) => record.meta.requireAuth)) {
     // 判断该路由是否需要登录权限
+    console.log('=============权限控制1')
 
     const token = localStorage.getItem('token')
     console.log('------------' + token)

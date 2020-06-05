@@ -12,10 +12,15 @@
       <el-divider direction="vertical"></el-divider>
       <span>
         <el-link href="/blog/add" type="success">发表博客</el-link>
+        <!-- <router-link :to="{ name: 'BlogAdd' }" type="success">发表博客</router-link> -->
       </span>
       <el-divider direction="vertical"></el-divider>
-      <span v-show="!hasLogin"><el-link type="info" href="/login">登录</el-link></span>
-      <span v-show="hasLogin"><el-link type="danger" @click="logout">退出</el-link></span>
+      <span v-show="!hasLogin"
+        ><el-link type="info" href="/login">登录</el-link></span
+      >
+      <span v-show="hasLogin"
+        ><el-link type="danger" @click="logout">退出</el-link></span
+      >
     </div>
   </div>
 </template>
@@ -30,13 +35,13 @@ export default {
         avatar:
           'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
       },
-      hasLogin: false
+      hasLogin: false,
     }
   },
   methods: {
     logout() {
       const _this = this
-      _this.$axios
+      axios
         .get('/logout', {
           headers: {
             Authorization: localStorage.getItem('token'),

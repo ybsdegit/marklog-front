@@ -67,16 +67,14 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           const _this = this
-        this.$axios
-            .post('/login', this.ruleForm)
-            .then((res) => {
-              const token = res.headers['authorization']
-              const userInfo = res.data.data
-              _this.$store.commit('SET_TOKEN', token)
-              _this.$store.commit('SET_USERINFO', userInfo)
-              _this.$router.push('/blogs')
-              _this.$message.success('登录成功')
-            })
+          axios.post('/login', this.ruleForm).then((res) => {
+            const token = res.headers['authorization']
+            const userInfo = res.data.data
+            _this.$store.commit('SET_TOKEN', token)
+            _this.$store.commit('SET_USERINFO', userInfo)
+            _this.$router.push('/blogs')
+            _this.$message.success('登录成功')
+          })
         } else {
           console.log('error submit!!')
           return false

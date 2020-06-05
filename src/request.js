@@ -1,9 +1,8 @@
-import axios from 'axios'
+import './plugins/axios'
 import Element from 'element-ui'
 import router from './router'
 import store from './store'
 
-axios.defaults.baseURL = 'http://112.126.101.188/9001'
 
 // 前置拦截
 axios.interceptors.request.use((config) => {
@@ -13,6 +12,10 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use(
   (response) => {
     let res = response.data
+    console.log("================= 前置拦截")
+    console.log(res)
+    console.log("=================")
+
     if (res.code === 20000) {
       return response
     } else {
