@@ -71,6 +71,7 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      console.log("立即创建", this.ruleForm)
       this.$refs[formName].validate((valid) => {
         if (valid) {
           const _this = this
@@ -100,11 +101,12 @@ export default {
     console.log(blogId)
     if(blogId) {
       this.axios.get('/blog/detail/' + blogId).then(res => {
-        console.log(res)
+        console.log("detail===========", res)
         const blog = res.data.data
         _this.ruleForm.title = blog.title
         _this.ruleForm.description = blog.description
         _this.ruleForm.content = blog.content
+        _this.ruleForm.id = blog.id
       })
     }
   }
